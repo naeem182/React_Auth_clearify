@@ -8,6 +8,8 @@ import Home from './Components/home/Home'
 import Register from './Components/Register/Register'
 import Login from './Components/Login/Login'
 import AuthProvider from './ContexApi/AuthProvider'
+import Order from './Components/Order/Order'
+import PrivateRoutes from './Components/Private/PrivateRoutes'
 
 const router = createBrowserRouter([
   {
@@ -31,9 +33,10 @@ const router = createBrowserRouter([
       },
       {
 
-        path: "/",
-        element: <MainLayout></MainLayout>
+        path: "/orders",
+        element: <PrivateRoutes><Order></Order></PrivateRoutes>
       },
+
     ]
   }
 ])
