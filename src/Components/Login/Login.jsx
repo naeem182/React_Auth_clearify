@@ -7,6 +7,9 @@ const Login = () => {
         e.preventDefault();
         // console.log("paisi tore")
 
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(password, email);
 
     }
 

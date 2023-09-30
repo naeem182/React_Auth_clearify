@@ -7,6 +7,12 @@ const Register = () => {
 
         e.preventDefault();
         // console.log("paisi tore")
+        const name = e.target.name.value;
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+        console.log(name, password, email);
+
+
 
 
     }
@@ -17,7 +23,7 @@ const Register = () => {
                     <h1 className="text-5xl font-bold">Register now!</h1>
 
                 </div>
-                <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                <div className="card flex-shrink-0 w-full max-w-md shadow-2xl bg-base-100">
                     <div className="card-body">
                         <form onSubmit={handleRegister}>
                             <div className="form-control">
@@ -46,7 +52,7 @@ const Register = () => {
                             </div>
                         </form>
                         {
-                            <p>Have an Account? please<Link to={"/login"}><button className="btn btn-link">Register</button></Link> </p>
+                            <p>Have an Account? please<Link to={"/login"}><button className="btn btn-link">Login</button></Link> </p>
                         }
                     </div>
                 </div>
