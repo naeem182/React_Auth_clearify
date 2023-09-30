@@ -1,13 +1,19 @@
 import { createContext } from "react"
+import PropTypes from 'prop-types';
 
-const AuthContex = createContext(null)
+export const AuthContext = createContext(null) // Capitalize the 'C'
+
 const AuthProvider = ({ children }) => {
     const AuthInfo = { name: "naeem" }
     return (
-        <AuthContex.Provider value={AuthInfo}>
+        <AuthContext.Provider value={AuthInfo}> {/* Capitalize the 'C' */}
             {children}
-        </AuthContex.Provider>
+        </AuthContext.Provider>
     )
+}
+
+AuthProvider.propTypes = {
+    children: PropTypes.node,
 }
 
 export default AuthProvider
