@@ -1,12 +1,23 @@
-import { createContext } from "react"
+import { createContext, useState } from "react"
 import PropTypes from 'prop-types';
+import { createUserWithEmailAndPassword } from "firebase/auth";
 
-export const AuthContext = createContext(null) // Capitalize the 'C'
+
+export const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }) => {
-    const AuthInfo = { name: "naeem" }
+    // const AuthInfo = { name: "naeem" }
+
+    const [user, setuser] = useState(null);
+
+    const createUser = (email, password) => {
+        return createUserWithEmailAndPassword(auth, email, password);
+    }
+    const AuthInfo = { user, createUser }
+
+
     return (
-        <AuthContext.Provider value={AuthInfo}> {/* Capitalize the 'C' */}
+        <AuthContext.Provider value={AuthInfo}>
             {children}
         </AuthContext.Provider>
     )

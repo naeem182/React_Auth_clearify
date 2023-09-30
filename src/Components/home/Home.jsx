@@ -1,14 +1,14 @@
-import { useContext } from "react"
-import { AuthContext } from "../../ContexApi/AuthProvider"
+// import { useContext } from "react"
+// import { AuthContext } from "../../ContexApi/AuthProvider"
 
 
 
 const Home = () => {
-    const AuthInfo = useContext(AuthContext)
+    // const AuthInfo = useContext(AuthContext)
 
     return (
         <div>
-            <h2 className="text-4xl">Name:{AuthInfo.name}</h2>
+            <h2 className="text-4xl">Name:{ }</h2>
         </div>
     )
 }
