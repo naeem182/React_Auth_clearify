@@ -10,16 +10,19 @@ const AuthProvider = ({ children }) => {
     // const AuthInfo = { name: "naeem" }
 
     const [user, setuser] = useState(null);
+    const [loading, setloading] = useState(true)
 
     const createUser = (email, password) => {
+        setloading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const signInUser = (email, password) => {
         return signInWithEmailAndPassword(auth, email, password);
+        setloading(true);
     }
     const logout = () => {
-
+        setloading(true);
         return signOut(auth)
     }
     //observe onAuth statechange
@@ -27,6 +30,7 @@ const AuthProvider = ({ children }) => {
         const unSubscribe = onAuthStateChanged(auth, currentuser => {
             setuser(currentuser)
             console.log('Current value of the current user', currentuser);
+            setloading(false);
         })
         return () => {
             unSubscribe();
@@ -37,7 +41,8 @@ const AuthProvider = ({ children }) => {
         user,
         createUser,
         signInUser,
-        logout
+        logout,
+        loading
     }
 
 
