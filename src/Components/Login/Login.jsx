@@ -1,11 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../ContexApi/AuthProvider";
 
 
 const Login = () => {
 
-    const { signInUser } = useContext(AuthContext)
+    const { signInUser, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+
 
     const handleLogin = (e) => {
 
@@ -18,13 +20,24 @@ const Login = () => {
         //create signinuser in firebase
         signInUser(email, password)
             .then(result => {
+                e.target.reset()
                 console.log(result.user)
+                navigate("/")
             })
             .catch(error => {
                 console.error(error.message)
             })
 
 
+    }
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+            .then(result => {
+                console.log(result.user)
+            })
+            .catch(error => {
+                console.error(error)
+            })
     }
 
     return (
@@ -59,6 +72,9 @@ const Login = () => {
                         {
                             <p>New to Auth? please<Link to={"/reg"}><button className="btn btn-link">Register</button></Link> </p>
                         }
+                        <p>
+                            <button onClick={handleGoogleSignIn} className="btn btn=link">Google</button>
+                        </p>
                     </div>
                 </div>
             </div>
